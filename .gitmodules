@@ -1,0 +1,3 @@
+[submodule "app/dist"]
+	path = app/dist
+	url = git@github.com:spooky/duel-pig.git
