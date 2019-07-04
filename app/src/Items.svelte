@@ -80,7 +80,7 @@
 
     .ban .tile:hover .overlay,
     .tile .action.ban {
-        background: url('/img/ban.svg') #0008 no-repeat 50% 50%;
+        background: url('img/ban.svg') #0008 no-repeat 50% 50%;
         background-size: 50%;
     }
     .pick .tile:hover .overlay {
@@ -104,7 +104,7 @@
                     <span class="party {arrangement[item].by}">{_(arrangement[item].by)}</span>
                     <span class="action {arrangement[item].action}"></span>
                 {/if}
-                <img src="/img/{img}/{item}.jpg" alt="{item}" />
+                <img src="img/{img}/{item}.jpg" alt="{item}" />
                 <span class="overlay"></span>
                 </button>
             </li>
