@@ -24,6 +24,7 @@ export function uid(msg) {
 }
 
 export const apiUrl = 'https://duel-pig.azurewebsites.net/api';
+// export const apiUrl = 'http://localhost:7071/api';
 
 export function post(endpoint, msg) {
     return fetch(

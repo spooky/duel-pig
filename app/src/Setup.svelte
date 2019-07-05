@@ -36,10 +36,13 @@
         border-radius: 0;
         margin-bottom: 0;
         background-color: #000;
+        margin-bottom: .3em;
     }
+    input { width: 12em; }
     button { width: 4em; }
     button:hover { background: #222; }
     button:active { background: #333; }
+
     .deck {
         display: flex;
         flex-direction: column;
@@ -47,6 +50,19 @@
         align-items: center;
         height: 100vh;
         background: rgba(0,0,0,0.6);
+    }
+
+    .options {
+        text-align: center;
+    }
+
+    @media only screen and (max-width: 580px) {
+        input,
+        select,
+        button {
+            width: 90%;
+            min-width: 250px;
+        }
     }
 </style>
 

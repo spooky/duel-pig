@@ -48,8 +48,8 @@
         background: #666;
         border: 0;
         box-shadow: 0 0 10px 0px rgba(0, 0, 0, .5);
-        width: 10em;
-        min-height: 90px;
+        width: 9em;
+        min-height: 80px;
     }
     .tile[disabled] {
         opacity: .6;
@@ -92,6 +92,13 @@
 
     .tile .party.us { background: #4169E155; }
     .tile .party.them { background: #f005; }
+
+    @media only screen and (min-width: 1080px) {
+        .tile {
+            width: 11em;
+            min-height: 100px;
+        }
+    }
 </style>
 
 <div class={cls}>

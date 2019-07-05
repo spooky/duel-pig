@@ -89,6 +89,7 @@
 
     .deck {
         margin: 0 auto;
+        padding-bottom: 1em;
         max-width: 1080px;
     }
 
