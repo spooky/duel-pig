@@ -3,6 +3,7 @@ export const actions = { BAN: 'ban', PICK: 'pick' };
 
 export function* machine(parties, bo, maps, champs, toss) {
     if (parties.length !== 2) throw('2 player system only');
+    if ([3, 5].indexOf(bo) == -1) throw(`don't know how to play best of ${bo}`);
 
     const arrangement = { maps: {}, champs: {}, state: null, action: null, by: null };
 
@@ -30,17 +31,18 @@ export function* machine(parties, bo, maps, champs, toss) {
     return arrangement;
 
     function mapAction() {
-        return counter > 2 ? actions.PICK : actions.BAN;
+        const noMoreBans = Object.values(arrangement.maps).filter(x => x.action == actions.BAN).length >= maps.length - bo;
+        return (counter + 1) % 4 < 2 || noMoreBans ? actions.PICK : actions.BAN;
     }
     function nextMap(input) {
-        return nextTurn(arrangement.maps, bo + 2 /* bans */, mapAction, maps, input, 'invalid map', states.CHAMPS)
+        return nextTurn(arrangement.maps, bo, mapAction, maps, input, 'invalid map', states.CHAMPS)
     }
 
     function champAction() {
-        return (counter - bo) % 3 ? actions.PICK : actions.BAN;
+        return (counter - bo + 1) % 3 ? actions.PICK : actions.BAN;
     }
     function nextChamp(input) {
-        return nextTurn(arrangement.champs, bo * 3 /* 1 ban, 2 picks */, champAction, champs, input, 'invalid champ', states.DONE)
+        return nextTurn(arrangement.champs, bo * 2, champAction, champs, input, 'invalid champ', states.DONE)
     }
 
     function nextTurn(store, until, action, available, value, err, nextState) {
@@ -52,7 +54,7 @@ export function* machine(parties, bo, maps, champs, toss) {
             order: counter++
         }
 
-        const done = Object.keys(store).length >= until;
+        const done = Object.values(store).filter(x => x.action == actions.PICK).length >= until;
 
         arrangement.action = action(counter);
         arrangement.by = parties[party % parties.length]
