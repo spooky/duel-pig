@@ -19,7 +19,7 @@
     onDestroy(unsubscribe);
 
     function onClick(data) {
-        next(data, () => post('messages', { sender, data, sid }));
+        next(data, () => post('messages', { sender, data, sid: bo + sid }));
     }
 
     function next(data, send = null) {
@@ -37,12 +37,12 @@
     }
 
     function run() {
-        establishConnection({ sender, sid }, onJoin, onMsg);
+        establishConnection({ sender, sid: bo + sid }, onJoin, onMsg);
     }
 
     function onJoin(msg) {
         // console.log('on join', msg);
-        const toss = msg.toss == uid({ sender, sid }) ? 0 : 1;
+        const toss = msg.toss == uid({ sender, sid: bo + sid }) ? 0 : 1;
         start(toss);
 
         connected = true;
