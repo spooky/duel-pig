@@ -6,7 +6,7 @@
     import { states, actions, machine } from './machine.js';
     import { db } from './stores.js'
 
-    export let bo, sid, sender = localStorage.getItem('nick');
+    export let bo, sid, sender = localStorage.getItem('nick'), error = null;
 
     const l = {...labels, 'us': sender};
 
@@ -65,8 +65,12 @@
             maps = v.maps;
             champs = v.champs;
 
-            m = machine(parties, bo, maps, champs, toss);
-            arrangement = m.next().value;
+            try {
+                m = machine(parties, bo, maps, champs, toss);
+                arrangement = m.next().value;
+            } catch(err) {
+                error = err;
+            }
         });
     }
 
@@ -96,16 +100,16 @@
     .hints { flex: 1; }
 </style>
 
-{#if connected}
+{#if error || !connected}
+<div class="deck-centered">
+    <h1>{ error || 'Connecting...'}</h1>
+</div>
+{:else}
 <header>
     <span class="hints">{_(arrangement.by + '-' + arrangement.action + '-' + arrangement.state)}</span>
 </header>
 <div class="deck">
     <Items cls="{arrangement.state} {arrangement.action}" labels={l} items={maps} arrangement={arrangement.maps} disabled={mapsDisabled} img="maps" on:click={e => onClick(e.detail)} />
     <Items cls="{arrangement.state} {arrangement.action}" labels={l} items={champs} arrangement={arrangement.champs} disabled={champsDisabled} img="champs" on:click={e => onClick(e.detail)} />
-</div>
-{:else}
-<div class="deck-centered">
-    <h1>Connecting...</h1>
 </div>
 {/if}
