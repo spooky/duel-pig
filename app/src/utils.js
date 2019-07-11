@@ -38,7 +38,7 @@ export function post(endpoint, msg) {
     .catch(console.error);
 }
 
-export function establishConnection(msg, onJoin, onMsg, onDone) {
+export function establishConnection(msg, onJoin, onMsg) {
     return post('negotiate', msg)
         .then(resp => resp.json())
         .then(info => {
