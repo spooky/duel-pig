@@ -77,7 +77,7 @@
     function _(name) { return  l[name] || name || ''; }
     function _whenDone(items, lookop) { return items.filter(x => _filter(lookop, x)).sort((l, r) => _order(lookop, l, r)); }
     function _filter(items, item) { return items[item] && items[item].action === actions.PICK; }
-    function _order(items, a, b) { return (items[a] || {order:100}).order - (items[b] || {order: 100}).order; }
+    function _order(items, a, b) { return (items[a] || {order: 100}).order - (items[b] || {order: 100}).order; }
 </script>
 
 <style>
