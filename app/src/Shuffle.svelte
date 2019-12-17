@@ -34,10 +34,16 @@
 
         if (arrangement.state === states.DONE)
             champs = _whenDone(champs, arrangement.champs);
+
+        // console.log(arrangement)
     }
 
     function run() {
-        establishConnection({ sender, sid: bo + sid }, onJoin, onMsg);
+        try {
+            establishConnection({ sender, sid: bo + sid }, onJoin, onMsg);
+        } catch (err) {
+            error = err;
+        }
     }
 
     function onJoin(msg) {
