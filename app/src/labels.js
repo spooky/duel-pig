@@ -18,6 +18,7 @@ export default {
       'church': 'Church of Azathoth',
       'corrupted_keep': 'Corrupted Keep',
       'deep_embrace': 'Deep embrace',
+      'exile': 'Exile',
       'lockbox': 'Lockbox',
       'longest_yard': 'Longest Yard',
       'ruins_of_sarnath': 'Ruins of Sarnath',
