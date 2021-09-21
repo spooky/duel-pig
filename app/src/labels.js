@@ -17,6 +17,7 @@ export default {
       'burial_chamber': 'Burial Chamber',
       'church': 'Church of Azathoth',
       'corrupted_keep': 'Corrupted Keep',
+      'dark_zone': 'The Dark Zone',
       'deep_embrace': 'Deep embrace',
       'exile': 'Exile',
       'lockbox': 'Lockbox',
