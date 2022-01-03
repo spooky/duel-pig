@@ -35,6 +35,7 @@ export function post(endpoint, msg) {
             body: JSON.stringify(msg)
         }
     )
+    .then(resp => resp.ok ? resp : Promise.reject(resp))
     .catch(console.error);
 }
 
