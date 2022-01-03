@@ -20,6 +20,7 @@ export default {
       'dark_zone': 'The Dark Zone',
       'deep_embrace': 'Deep embrace',
       'exile': 'Exile',
+      'insomnia': 'Insomnia',
       'lockbox': 'Lockbox',
       'longest_yard': 'Longest Yard',
       'ruins_of_sarnath': 'Ruins of Sarnath',
